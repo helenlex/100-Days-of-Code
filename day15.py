@@ -83,7 +83,7 @@ def make_coffee():
         if order != "espresso":
             resources["milk"] -= MENU[order]["ingredients"]["milk"]
         money += MENU[order]["cost"]
-        print (f"Here is your {order}. Enjoy!")
+        print (f"Here is your {order} ☕. Enjoy!")
 
 # UI of teh coffee machine
 while on == True:
