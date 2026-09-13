@@ -1,4 +1,5 @@
-""" creating a quiz """
+"""creating a quiz"""
+
 from data import question_data
 from question_model import Question
 from quiz_brain import QuizBrain
@@ -15,3 +16,6 @@ quiz = QuizBrain(question_bank)
 
 while quiz.still_has_questions():
     quiz.next_question()
+
+if not quiz.still_has_questions():
+    quiz.final_score()
