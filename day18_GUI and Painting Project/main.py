@@ -8,13 +8,14 @@ monty.shape("turtle")
 monty.color("DeepPink")
 
 # challenge 1 - make a square
+
 for x in range(4):
     monty.forward(100)
     monty.right(90)
 
 # challenge 2 - make a dotted line
 
-# for x in range (10):
+for x in range (10):
     monty.forward(10)
     monty.penup()
     monty.forward(10)
@@ -36,7 +37,7 @@ for x in range (3, 11):
     # line should be thicker
     # each line should be a random colour
 
-while True:
+for x in range (0, 100):
     monty.width(10)
     to_angle = [0, 90, 180, 270]
     angle = r.choice(to_angle)
@@ -44,6 +45,17 @@ while True:
     monty.seth(angle)
     monty.speed(10)
     monty.forward(30)
+
+# challenge 5 - spirograph
+    # figure out how to draw a circle
+    # figure out how to make it wider
+    # figure out how to tilt it
+
+for x in range(0, 361, 10):
+    monty.speed(0)
+    monty.pencolor(r.random(),r.random(),r.random())
+    monty.circle(100, extent=360)
+    monty.seth(x)
 
 # print to screen
 SCREEN = t.Screen()
