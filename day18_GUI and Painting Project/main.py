@@ -37,7 +37,7 @@ for x in range (3, 11):
     # line should be thicker
     # each line should be a random colour
 
-for x in range (0, 100):
+for x in range (100):
     monty.width(10)
     to_angle = [0, 90, 180, 270]
     angle = r.choice(to_angle)
