@@ -32,9 +32,16 @@ if user_choice:
 
 while is_race_on:
     for turtle in all_turtles:
+        if turtle.xcor() > 230:
+            is_race_on = False
+            winning_color = turtle.pencolor()
+            if winning_color == user_choice:
+                print(f"You've won, the {winning_color} turtle is the winner!")
+            elif winning_color != user_choice:
+                print(f"You've lost, the {winning_color} turtle is the winner!")
+            else:
+                print("It's a tie!")
         rand_distance = r.randint(0,10)
         turtle.forward(rand_distance)
-
-
 
 SCREEN.exitonclick()
