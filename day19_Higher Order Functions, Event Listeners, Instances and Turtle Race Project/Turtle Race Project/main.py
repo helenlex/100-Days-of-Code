@@ -1,5 +1,8 @@
 """ building a turtle race """
+import random as r
 import turtle as t
+
+is_race_on = False
 
 SCREEN = t.Screen()
 SCREEN.setup(width = 500, height= 400)
@@ -10,17 +13,28 @@ y_axis = [-100, -50, 0, 50, 100, 150]
 
 #print(andreas.pos())
 
+all_turtles = []
+
 def create_turtle():
     """ creates a turtle duplicate """
     new_turtle = t.Turtle(shape= "turtle")
     new_turtle.penup()
     return new_turtle
 
+for turtle_index in range(0,6):
+    new_turtle = create_turtle()
+    new_turtle.color(colours[turtle_index])
+    new_turtle.goto(x= -230, y = y_axis[turtle_index])
+    all_turtles.append(new_turtle)
 
-for index in range(6):
-    names[index] = create_turtle()
-    names[index].color(colours[index])
-    names[index].goto(x= -230, y= y_axis[index])
+if user_choice:
+    is_race_on = True
+
+while is_race_on:
+    for turtle in all_turtles:
+        rand_distance = r.randint(0,10)
+        turtle.forward(rand_distance)
+
 
 
 SCREEN.exitonclick()
