@@ -17,11 +17,11 @@ all_turtles = []
 
 def create_turtle():
     """ creates a turtle duplicate """
-    new_turtle = t.Turtle(shape= "turtle")
-    new_turtle.penup()
-    return new_turtle
+    turtle_dup = t.Turtle(shape= "turtle")
+    turtle_dup.penup()
+    return turtle_dup
 
-for turtle_index in range(0,6):
+for turtle_index in range(6):
     new_turtle = create_turtle()
     new_turtle.color(colours[turtle_index])
     new_turtle.goto(x= -230, y = y_axis[turtle_index])
