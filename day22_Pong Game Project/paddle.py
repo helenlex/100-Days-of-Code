@@ -1,28 +1,27 @@
 from turtle import Turtle
 
 MOVE_DISTANCE = 20
+R_PADDLE_COR = (350, 0)
+L_PADDLE_COR = (-350, 0)
 
-class Paddle:
+class R_Paddle(Turtle):
     def __init__(self):
-        self.paddle = Turtle()
-        self.paddle.shape("square")
-        self.paddle.color("white")
-        self.paddle.shapesize(stretch_wid=5, stretch_len=1)
-        self.paddle.penup()
-        self.paddle.goto(x = 350, y = 0)
+        super().__init__()
+        self.shape("square")
+        self.color("white")
+        self.shapesize(stretch_wid=5, stretch_len=1)
+        self.penup()
+        self.goto(R_PADDLE_COR)
 
     def move_up(self):
-        new_y = self.paddle.ycor() + MOVE_DISTANCE
-        self.paddle.goto(self.paddle.xcor(), new_y)
+        new_y = self.ycor() + MOVE_DISTANCE
+        self.goto(self.xcor(), new_y)
 
     def move_down(self):
-        new_y = self.paddle.ycor() - MOVE_DISTANCE
-        self.paddle.goto(self.paddle.xcor(), new_y)
+        new_y = self.ycor() - MOVE_DISTANCE
+        self.goto(self.xcor(), new_y)
 
-    def move_left(self):
-        new_x = self.paddle.xcor() - MOVE_DISTANCE
-        self.paddle.goto(new_x, self.paddle.ycor())
-
-    def move_right(self):
-        new_x = self.paddle.xcor() + MOVE_DISTANCE
-        self.paddle.goto(new_x, self.paddle.ycor())
+class L_Paddle(R_Paddle):
+    def __init__(self):
+        super().__init__()
+        self.goto(L_PADDLE_COR)
