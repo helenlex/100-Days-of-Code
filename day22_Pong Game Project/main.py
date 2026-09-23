@@ -4,6 +4,8 @@ from paddle import R_Paddle, L_Paddle
 
 from ball import Ball
 
+import time
+
 # CREATE THE SCREEN
 SCREEN = Screen()
 SCREEN.setup(width = 800, height = 600)
@@ -30,9 +32,13 @@ game_is_on = True
 
 while game_is_on:
     SCREEN.update()
-    ball.ball_move()  
-
+    time.sleep(0.1)
+    ball.move()
 # DETECT COLLISION WITH WALL AND BOUNCE
+    # COLLISION ON TOP AND BOTTOM WALLS ONLY, AND BOUNCE
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce()
+
 
 # DETECT COLLISION WITH PADDLE
 
@@ -40,5 +46,6 @@ while game_is_on:
 
 
 # KEEP SCORE
+    # IF LEFT AND RIGHT WALLS ARE HIT, POINT TO THE OPPONENT
 
 SCREEN.exitonclick()
