@@ -17,16 +17,16 @@ SCREEN.tracer(n = 0, delay = 0)
 ball = Ball()
 
 # CREATE AND MOVE A PADDLE
-paddle2 = R_Paddle()
+r_paddle = R_Paddle()
 SCREEN.listen()
-SCREEN.onkeypress(fun = paddle2.move_up, key= "Up")
-SCREEN.onkeypress(fun = paddle2.move_down, key= "Down")
+SCREEN.onkeypress(fun = r_paddle.move_up, key= "Up")
+SCREEN.onkeypress(fun = r_paddle.move_down, key= "Down")
 
 # CREATE ANOTHER PADDLE
-paddle1 = L_Paddle()
+l_paddle = L_Paddle()
 SCREEN.listen()
-SCREEN.onkeypress(fun = paddle1.move_up, key= "w")
-SCREEN.onkeypress(fun = paddle1.move_down, key= "s")
+SCREEN.onkeypress(fun = l_paddle.move_up, key= "w")
+SCREEN.onkeypress(fun = l_paddle.move_down, key= "s")
 
 game_is_on = True
 
@@ -39,7 +39,9 @@ while game_is_on:
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce()
 
-# DETECT COLLISION WITH PADDLE
+    # DETECT COLLISION WITH R PADDLE
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 340:
+        print("Made contact")
 
 # DETECT WHEN PADDLE MISSES
 
