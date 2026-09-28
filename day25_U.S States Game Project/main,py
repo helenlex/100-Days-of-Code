@@ -6,7 +6,8 @@ with open(r"day25_U.S States Game Project\weather_data.csv") as file:
 print(data)
 
 # METHOD TWO  - works but so many lines just to grab one column
-# import csv
+
+import csv
 
 with open(r"day25_U.S States Game Project\weather_data.csv") as file:
     data = csv.reader(file)
