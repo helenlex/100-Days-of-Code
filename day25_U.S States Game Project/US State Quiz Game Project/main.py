@@ -37,7 +37,7 @@ def correct_answer_process(user_input):
 
 while not game_over:
     #4. Use a loop to allow the user to keep guessing
-        if answer_state == "exit":
+        if answer_state == "Exit":
              game_over = True
         
         while answer_state != "Exit":
@@ -51,6 +51,6 @@ while not game_over:
 
 
 
-states_to_learn = file[]
+#states_to_learn = file[]
 
 screen.mainloop()
