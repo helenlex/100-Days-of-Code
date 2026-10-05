@@ -3,7 +3,7 @@ import pandas as pd
 
 screen = turtle.Screen()
 screen.title("U.S States Game")
-image = r"C:\Users\hle\Downloads\day25\blank_states_img.gif"
+image = r"day25_U.S States Game Project\US State Quiz Game Project\blank_states_img.gif"
 screen.addshape(image)
 
 turtle.shape(image)
@@ -12,7 +12,7 @@ turtle.shape(image)
 answer_state = screen.textinput(title= "Guess the state", 
                                 prompt= "What's another state's name?").title()
 
-file = pd.read_csv(r"C:\Users\hle\Downloads\day25\50_states.csv")
+file = pd.read_csv(r"day25_U.S States Game Project\US State Quiz Game Project\50_states.csv")
 
 game_over = False
 correct_guesses = []
@@ -42,11 +42,9 @@ while not game_over:
              # List that I will make into a data frame
              states_to_learn = []
              # if a state in the 50 states file wasn't guessed, append to the list
-             for state in file["state"]:
-                  if state not in correct_guesses:
-                       states_to_learn.append(state)
+             states_to_learn = [state for state in file["state"] if state not in correct_guesses] # list comprehension
              states_to_learn_file = pd.DataFrame(states_to_learn)
-             states_to_learn_file.to_csv(r"C:\Users\hle\Downloads\day25\states_to_learn.csv")
+             states_to_learn_file.to_csv(r"day25_U.S States Game Project\US State Quiz Game Project\states_to_learn.csv")
         
         while answer_state != "Exit":
              correct_answer_process(answer_state)
