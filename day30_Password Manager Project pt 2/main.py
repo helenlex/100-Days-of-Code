@@ -37,3 +37,11 @@ else: # if try block was run without any exceptions, do this
 finally: # whether or not the try block ran with or without exceptions, do this
     file.close()
     print("File was closed")
+
+
+#raising my own exceptions
+height = float(input("Height: "))
+weight = int(input("Weight: "))
+
+if height > 3:
+    raise ValueError("Human Height should not be over 3 meters.")
