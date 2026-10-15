@@ -2,6 +2,7 @@ from tkinter import * # only imports classes and constants
 from tkinter import messagebox # this is a module within the library
 import random
 import pyperclip
+import json
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
@@ -31,17 +32,26 @@ def save():
     website = website_entry.get()
     emailusername = emailusername_entry.get()
     password = password_entry.get()
+    new_data = {
+        website: {
+            "email": emailusername,
+            "password": password,
+        }
+    }
 
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="Oops", message= "Please don't leave any fields empty!")
 
-    else: 
-        is_ok = messagebox.askokcancel(title= website, message= f"These are the details entered: \nEmail: {emailusername} \nPassword: {password} \nIs it ok to save?")
+    else:
+        with open(r"day29_Password Manager Project\data.json", "r") as file:
+            #reading old data
+            data = json.load(file)
+            #updating old data with new data
+            data.update(new_data)
 
-        if is_ok:
-
-            with open(r"C:\Users\hle\Downloads\data.txt", "a") as file:
-                file.write(f"{website} | {emailusername} | {password}\n")
+        with open(r"day29_Password Manager Project\data.json", "w") as file:
+            #saving updated data
+            json.dump(data, file, indent=4)
 
             website_entry.delete(0, "end")
             password_entry.delete(0, "end")
@@ -53,7 +63,7 @@ window.title("Password Manager")
 window.config(pady= 50, padx= 20)
 
 canvas = Canvas(width= 200, height= 200)
-logo = PhotoImage(file = r"C:\Users\hle\Downloads\logo.png")
+logo = PhotoImage(file = r"day29_Password Manager Project\logo.png")
 canvas.create_image(100, 100, image= logo)
 canvas.grid(row= 0, column= 1, sticky= "EW")
 
