@@ -43,16 +43,20 @@ def save():
         messagebox.showinfo(title="Oops", message= "Please don't leave any fields empty!")
 
     else:
-        with open(r"day29_Password Manager Project\data.json", "r") as file:
+        try:
+            with open(r"day29_Password Manager Project\data.json", "r") as file:
             #reading old data
-            data = json.load(file)
+                data = json.load(file)
+        except FileNotFoundError:
+             with open(r"day29_Password Manager Project\data.json", "w") as file:
+                  json.dump(new_data, file, indent=4)
+        else:
             #updating old data with new data
             data.update(new_data)
-
-        with open(r"day29_Password Manager Project\data.json", "w") as file:
+            with open(r"day29_Password Manager Project\data.json", "w") as file:
             #saving updated data
-            json.dump(data, file, indent=4)
-
+                json.dump(data, file, indent=4)
+        finally:
             website_entry.delete(0, "end")
             password_entry.delete(0, "end")
 
