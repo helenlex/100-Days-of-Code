@@ -60,6 +60,20 @@ def save():
             website_entry.delete(0, "end")
             password_entry.delete(0, "end")
 
+# ---------------------------- FIND PASSWORD ------------------------------- #
+def find_password():
+    input = website_entry.get()
+    try:
+        with open(r"day29_Password Manager Project\data.json", "r") as file:
+        #reading old data
+            data = json.load(file)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Note", message= "No Data File Found")
+    else:
+        if input in data:
+            messagebox.showinfo(title=input, message= f"Email: {data[input]["email"]}\nPassword: {data[input]["password"]}")
+        else:
+             messagebox.showinfo(title="Website not found", message= "No details for the website exists")
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -83,7 +97,7 @@ password_label.grid(row = 3, column= 0)
 
 #entries
 website_entry = Entry(width= 35)
-website_entry.grid(row=1, column= 1, columnspan= 2, sticky= "EW")
+website_entry.grid(row=1, column= 1, sticky= "EW")
 website_entry.focus()
 
 emailusername_entry = Entry(width= 35)
@@ -100,6 +114,8 @@ generate_pw_button.grid(row=3, column=2, sticky= "EW")
 add_button = Button(text= "Add", width= 36, command= save)
 add_button.grid(row = 4, column=1, columnspan=2, sticky= "EW")
 
+search_button = Button(text = "Search", command= find_password)
+search_button.grid(row = 1, column=2, sticky= "EW")
 
 
 window.mainloop()
